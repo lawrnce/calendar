@@ -7,11 +7,11 @@ var path = require('path');
 mongoose.connect('mongodb://localhost/availabledates');
 
 // Store static files
-app.use(express.static(__dirname+'/../client'));
+app.use(express.static(__dirname+'/client'));
 
 // Home page will be the calendar
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname+'/../client/views/'));
+  res.sendFile(path.join(__dirname+'/client/views/'));
 });
 
 // GET
