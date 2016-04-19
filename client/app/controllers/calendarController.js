@@ -3,5 +3,6 @@
  */
 angular.module('app.controller.calendar', ['app.service.date'])
 	.controller('CalendarController', ['$scope', 'DateService', function($scope, DateService) {
-		$scope.availableDates = DateService.dates;
+		$scope.today = moment();
+		$scope.dates = DateService.dates;
 	}]);
