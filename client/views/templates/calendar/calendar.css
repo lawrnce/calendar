@@ -1,6 +1,6 @@
 .border-box {
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
 }
 
 calendar {
@@ -8,103 +8,107 @@ calendar {
     float: left;
     display: block;
     box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  background: white;
-  width: 300px;
-  /*border: solid 1px #CCC;*/
-  margin-bottom: 10px;
+    -moz-box-sizing: border-box;
+    background: white;
+    width: 300px;
+    /*border: solid 1px #CCC;*/
+    margin-bottom: 10px;
 }
 
-/*Header*/
 calendar > div.header {
-  float: left;
-  width: 100%;
-  background: #72C086;
-  height: 40px;
-  color: white;
+    float: left;
+    width: 100%;
+    background: #72C086;
+    height: 40px;
+    color: white;
 }
 
 calendar > div.header > * {
-  height: 40px;
-  line-height: 40px !important;
-  display: inline-block;
-  vertical-align: middle;
+    height: 40px;
+    line-height: 40px !important;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 calendar > div.header > i {
-  float: left;
-  width: 40px;
-  font-size: 1.15em;
-  font-weight: normal;
-  position: relative;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  padding: 0 10px;
-  cursor: pointer;
+    float: left;
+    width: 40px;
+    font-size: 1.15em;
+    font-weight: normal;
+    position: relative;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    padding: 0 10px;
+    cursor: pointer;
 }
 
 calendar > div.header > i.fa-angle-left {
-  text-align: left;
+    text-align: left;
 }
 
 calendar > div.header > i.fa-angle-right {
-  text-align: right;
-  margin-left: -40px;
+    text-align: right;
+    margin-left: -40px;
 }
 
 calendar > div.header > span {
-  float: left;
-  width: 100%;
-  font-weight: bold;
-  text-transform: uppercase;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  padding-left: 50px;
-  margin-left: -40px;
-  text-align: center;
-  padding-right: 40px;
-  color: inherit;
+    float: left;
+    width: 100%;
+    font-weight: bold;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    padding-left: 50px;
+    margin-left: -40px;
+    text-align: center;
+    padding-right: 40px;
+    color: inherit;
 }
 
 calendar > div.week {
-  float: left;
-  width: 100%;
+    float: left;
+    width: 100%;
 }
 
 calendar > div.week:first-child {
-  border-top: none;
+    border-top: none;
 }
 
 calendar > div.week > span.day {
-  float: left;
-  width: 14.28571429%;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  font-size: 1.00em;
-  text-align: center;
-  height: 30px;
-  line-height: 30px !important;
-  display: inline-block;
-  vertical-align: middle;
-  background: white;
-  color: #d3d3d3;
-  cursor: pointer;
+    float: left;
+    width: 14.28571429%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    font-size: 1.00em;
+    text-align: center;
+    height: 30px;
+    line-height: 30px !important;
+    display: inline-block;
+    vertical-align: middle;
+    background: white;
+    color: #b3b3b3;
+    cursor: pointer;
 }
 
 calendar > div.week > span.day:first-child {
-  border-left: none;
+    border-left: none;
 }
 
 calendar > div.week > span.day.today {
-  background: #E3F2FF;
+    color: #808080;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+calendar > div.week > span.day.different-month {
+    color: #e6e6e6;
 }
 
 calendar > div.week > span.day.selected {
-  background: #90CB9F;
-  color: white;
+    background: #90CB9F;
+    color: white;
 }
 
 calendar > div.week.names > span {
-  color: #72C086;
-  font-weight: normal;
+    color: #72C086;
+    font-weight: normal;
 }
