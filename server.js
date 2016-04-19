@@ -3,12 +3,15 @@ var app = express();
 var mongoose = require('mongoose');
 var path = require('path');
 
-// For demo, store all Angular files for displaying
+// Connect to db
+mongoose.connect('mongodb://localhost/availabledates');
+
+// Store static files
 app.use(express.static(__dirname+'/../client'));
 
 // Home page will be the calendar
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname+'/../client/views/index.html'));
+  res.sendFile(path.join(__dirname+'/../client/views/'));
 });
 
 // GET
