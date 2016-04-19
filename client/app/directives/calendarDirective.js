@@ -1,11 +1,12 @@
 /**
  *  Calendar Directive
  */
-angular.module('calendarApp', [])
-.directive('calendar', function({
-  return {
-    restrict: 'E',
-    replace: 'true',
-    template: '../../views/templates/calendar.html'
-  }
-}));
+angular.module('app.directive.calendar', [])
+	.directive('calendar', function() {
+  		return {
+    		// restrict : 'E',
+    		// scope: {},
+    		templateUrl : "../../views/templates/calendar.html"
+    		// template: "<h1>ASD</h1>"
+  		};
+	});

@@ -1,16 +1,10 @@
 /**
  *  Date Service
  */
-angular.module('Date', [])
-.factory('dateGetter', ['$http', function($http) {
-  var serverURL = "";
-  var dates = ["test1", "test2"];
-
-  var refresh = function() {
-
-  }
-
-  refresh();
-
-  return dates;
-}]);
+angular.module('app.service.date', [])
+	.factory('DateService', function() {
+		var dates = ["2016-04-20", "2016-04-21"];
+		return {
+			dates : dates
+		}
+	});

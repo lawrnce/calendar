@@ -1,7 +1,7 @@
 /**
  *  Calendar Controller
  */
-angular.module('calendarApp', ['date'])
-.controller('CalendarController', ['$scope', 'dateGetter', function($scope) {
-  $scope.availableDates = dateGetter.dates;
-}]);
+angular.module('app.controller.calendar', ['app.service.date'])
+	.controller('CalendarController', ['$scope', 'DateService', function($scope, DateService) {
+		$scope.availableDates = DateService.dates;
+	}]);
