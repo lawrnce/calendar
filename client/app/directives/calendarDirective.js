@@ -7,14 +7,11 @@ angular.module('app.directive.calendar', [])
     		restrict : 'E',
     		scope: {
     			current: "=",
-    			available: "=",
-    			selected: "="
+    			availableDates: "="
     		},
     		templateUrl : "templates/calendar/calendar.html",
     		css: "templates/calendar/calendar.css",
     		link: function(scope) {
-
-    			scope.selected = removeTime(scope.selected || moment());
     			scope.current = removeTime(scope.selected || moment());
     			scope.month = scope.current.clone();
 
@@ -22,10 +19,6 @@ angular.module('app.directive.calendar', [])
     			start.date(1);
     			removeTime(start.day(0));
     			buildMonth(scope, start, scope.month)
-
-				scope.select = function(day) {
-                	scope.selected = day.date;  
-            	};
 
     			scope.next = function() {
     				var next = scope.month.clone();
@@ -43,8 +36,26 @@ angular.module('app.directive.calendar', [])
     		}
   		};
 
-  		function isAvailable(date) {
-  			return true
+  		/**
+  		 *	Determines if a given date is available.
+  		 *
+  		 *	@param {$scope} scope
+		 *		The scope of the current object.
+  		 *	@param {Momentjs~moment} date
+  		 *		A date to be compared.
+  		 *
+  		 *	@return 
+  		 *		A boolean determining if available.
+  		 */
+  		function isAvailable(scope, date) {
+  			var year = date.year(), 
+  				month = date.month() + 1, // momentjs is 0 indexed 
+  				day = date.date(); 
+  			if(scope.availableDates[year][month] !== undefined) {
+  				return scope.availableDates[year][month].includes(day);
+  			} else {
+  				return false
+  			}
   		}
 
   		/**
@@ -74,9 +85,12 @@ angular.module('app.directive.calendar', [])
 		 */
   		function buildMonth(scope, start, month) {
   			scope.weeks = [];
-  			var done = false, date = start.clone(), monthIndex = date.month(), count = 0;
+  			var done = false, 
+  				date = start.clone(), 
+  				monthIndex = date.month(), 
+  				count = 0;
   			while(!done) {
-  				scope.weeks.push({days: buildWeek(date.clone(), month)});
+  				scope.weeks.push({days: buildWeek(scope, date.clone(), month)});
   				date.add(1, "w");
   				done = count++ > 2 && monthIndex !== date.month();
   				monthIndex = date.month();
@@ -88,6 +102,8 @@ angular.module('app.directive.calendar', [])
 		 *  Determines if the date is the current date and sets the date if 
 		 *	it is an available date.
 		 *
+		 *	@param {$scope} scope
+		 *		The scope of the current object.
 		 *	@params {Momentjs~moment} date
 		 *		The start date of the week.
 		 *	@params {Momentjs~moment} month
@@ -96,16 +112,15 @@ angular.module('app.directive.calendar', [])
 		 *	@return
 		 *		An array of day objects.
 		 */
-  		function buildWeek(date, month) {
+  		function buildWeek(scope, date, month) {
   			var days = [];
         	for (var i = 0; i < 7; i++) {
             	days.push({
                 	name: date.format("dd").substring(0, 1),
-                	// number: (date.month() === month.month()) ? date.date() : null,
                 	number: date.date(),
                 	isCurrentMonth: date.month() === month.month(),
-                	isAvailable: isAvailable(date.date()),
                 	isToday: date.isSame(new Date(), "day"),
+                	isAvailable: isAvailable(scope, date),
                 	date: date
             	});
             	date = date.clone();

@@ -11,7 +11,6 @@ calendar {
     -moz-box-sizing: border-box;
     background: white;
     width: 300px;
-    /*border: solid 1px #CCC;*/
     margin-bottom: 10px;
 }
 
@@ -86,7 +85,6 @@ calendar > div.week > span.day {
     vertical-align: middle;
     background: white;
     color: #b3b3b3;
-    cursor: pointer;
 }
 
 calendar > div.week > span.day:first-child {
@@ -103,7 +101,7 @@ calendar > div.week > span.day.different-month {
     color: #e6e6e6;
 }
 
-calendar > div.week > span.day.selected {
+calendar > div.week > span.day.available {
     background: #90CB9F;
     color: white;
 }
