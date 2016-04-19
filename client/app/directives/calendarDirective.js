@@ -7,11 +7,15 @@ angular.module('app.directive.calendar', [])
     		restrict : 'E',
     		scope: {
     			current: "=",
-    			available: "="
+    			available: "=",
+    			selected: "="
     		},
     		templateUrl : "templates/calendar/calendar.html",
     		css: "templates/calendar/calendar.css",
     		link: function(scope) {
+
+    			scope.selected = removeTime(scope.selected || moment());
+
     			scope.current = removeTime(scope.selected || moment());
     			scope.month = scope.current.clone();
 
@@ -19,6 +23,10 @@ angular.module('app.directive.calendar', [])
     			start.date(1);
     			removeTime(start.day(0));
     			buildMonth(scope, start, scope.month)
+
+				scope.select = function(day) {
+                	scope.selected = day.date;  
+            	};
 
     			scope.next = function() {
     				var next = scope.month.clone();
@@ -61,7 +69,7 @@ angular.module('app.directive.calendar', [])
         	for (var i = 0; i < 7; i++) {
             	days.push({
                 	name: date.format("dd").substring(0, 1),
-                	number: (date.month() === month.month()) ? date.date() : 0,
+                	number: (date.month() === month.month()) ? date.date() : null,
                 	isAvailable: isAvailable(date.date()),
                 	date: date
             	});
