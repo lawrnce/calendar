@@ -1,0 +1,20 @@
+{
+  "name": "calendar",
+  "version": "1.0.0",
+  "description": "A calenar that shows available dates from a server's response.",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lawrnce/calendar.git"
+  },
+  "author": "Lawrence Tran",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lawrnce/calendar/issues"
+  },
+  "homepage": "https://github.com/lawrnce/calendar#readme"
+}
