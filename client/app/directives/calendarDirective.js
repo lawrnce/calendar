@@ -9,8 +9,8 @@ angular.module('app.directive.calendar', [])
     			current: "=",
     			availableDates: "="
     		},
-    		templateUrl : "templates/calendar/calendar.html",
-    		css: "templates/calendar/calendar.css",
+    		templateUrl : "views/templates/calendar/calendar.html",
+    		css: "views/templates/calendar/calendar.css",
     		link: function(scope) {
     			scope.current = removeTime(scope.selected || moment());
     			scope.month = scope.current.clone();
