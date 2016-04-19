@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 var mongoose = require('mongoose');
+var uniqueValidator = require('mongoose-unique-validator');
 var path = require('path');
 var moment = require('moment');
 
@@ -10,8 +11,9 @@ mongoose.connect('mongodb://localhost/availabledates');
 
 // Define date schema
 var dateSchema = mongoose.Schema({
-  date: String
+  date: {type: String, required: true, unique: true}
 });
+dateSchema.plugin(uniqueValidator);
 
 // Create model
 var AvailableDates = mongoose.model('AvailableDates', dateSchema);
