@@ -1,18 +1,24 @@
-/**
- *  Calendar Directive
- */
-angular.module('app.directives.calendar', [])
-	.directive('calendar', function() {
+angular.module('calendar', ['app.services.date'])
+	/**
+ 	 * 	Calendar Controller
+ 	 *
+ 	 */
+	.controller('CalendarController', ['$scope', 'DateService', function($scope, DateService) {
+		$scope.dates = DateService.dates;
+	}])
+
+	/**
+	 *  Calendar Directive
+ 	 *
+ 	 */
+	.directive('myCalendar', function() {
   		return {
     		restrict : 'E',
-    		scope: {
-    			current: "="
-    		},
-    		templateUrl : "views/templates/calendar/calendar.html",
-    		css: "views/templates/calendar/calendar.css",
+    		templateUrl : "app/calendar/calendar.html",
+        css: "css/calendar.css",
     		link: function(scope) {
           console.log(scope.dates)
-    			scope.current = removeTime(scope.selected || moment());
+    			scope.current = removeTime(moment());
     			scope.month = scope.current.clone();
 
     			var start = scope.current.clone();
@@ -48,8 +54,8 @@ angular.module('app.directives.calendar', [])
   		 *		A boolean determining if available.
   		 */
   		function isAvailable(scope, date) {
-        console.log(scope.availableDates)
-        //if (scope.availableDates === null) {
+        //console.log(scope.dates)
+        //if (scope.dates === null) {
           //return false;
         //}
         //var year = date.year(),

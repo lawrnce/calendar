@@ -3,7 +3,7 @@
     -moz-box-sizing: border-box;
 }
 
-calendar {
+my-calendar {
     font-family: Arial, Helvetica, sans-serif;
     float: left;
     display: block;
@@ -14,7 +14,7 @@ calendar {
     margin-bottom: 10px;
 }
 
-calendar > div.header {
+my-calendar > div.header {
     float: left;
     width: 100%;
     background: #72C086;
@@ -22,14 +22,14 @@ calendar > div.header {
     color: white;
 }
 
-calendar > div.header > * {
+my-calendar > div.header > * {
     height: 40px;
     line-height: 40px !important;
     display: inline-block;
     vertical-align: middle;
 }
 
-calendar > div.header > i {
+my-calendar > div.header > i {
     float: left;
     width: 40px;
     font-size: 1.15em;
@@ -41,16 +41,16 @@ calendar > div.header > i {
     cursor: pointer;
 }
 
-calendar > div.header > i.fa-angle-left {
+my-calendar > div.header > i.fa-angle-left {
     text-align: left;
 }
 
-calendar > div.header > i.fa-angle-right {
+my-calendar > div.header > i.fa-angle-right {
     text-align: right;
     margin-left: -40px;
 }
 
-calendar > div.header > span {
+my-calendar > div.header > span {
     float: left;
     width: 100%;
     font-weight: bold;
@@ -63,16 +63,16 @@ calendar > div.header > span {
     color: inherit;
 }
 
-calendar > div.week {
+my-calendar > div.week {
     float: left;
     width: 100%;
 }
 
-calendar > div.week:first-child {
+my-calendar > div.week:first-child {
     border-top: none;
 }
 
-calendar > div.week > span.day {
+my-calendar > div.week > span.day {
     float: left;
     width: 14.28571429%;
     box-sizing: border-box;
@@ -87,26 +87,26 @@ calendar > div.week > span.day {
     color: #b3b3b3;
 }
 
-calendar > div.week > span.day:first-child {
+my-calendar > div.week > span.day:first-child {
     border-left: none;
 }
 
-calendar > div.week > span.day.today {
+my-calendar > div.week > span.day.today {
     color: #808080;
     font-weight: bold;
     text-decoration: underline;
 }
 
-calendar > div.week > span.day.different-month {
+my-calendar > div.week > span.day.different-month {
     color: #e6e6e6;
 }
 
-calendar > div.week > span.day.available {
+my-calendar > div.week > span.day.available {
     background: #90CB9F;
     color: white;
 }
 
-calendar > div.week.names > span {
+my-calendar > div.week.names > span {
     color: #72C086;
     font-weight: normal;
 }
