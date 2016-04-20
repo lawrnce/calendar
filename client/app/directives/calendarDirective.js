@@ -1,17 +1,17 @@
 /**
  *  Calendar Directive
  */
-angular.module('app.directive.calendar', [])
+angular.module('app.directives.calendar', [])
 	.directive('calendar', function() {
   		return {
     		restrict : 'E',
     		scope: {
-    			current: "=",
-    			availableDates: "="
+    			current: "="
     		},
     		templateUrl : "views/templates/calendar/calendar.html",
     		css: "views/templates/calendar/calendar.css",
     		link: function(scope) {
+          console.log(scope.dates)
     			scope.current = removeTime(scope.selected || moment());
     			scope.month = scope.current.clone();
 
@@ -44,24 +44,28 @@ angular.module('app.directive.calendar', [])
   		 *	@param {Momentjs~moment} date
   		 *		A date to be compared.
   		 *
-  		 *	@return 
+  		 *	@return
   		 *		A boolean determining if available.
   		 */
   		function isAvailable(scope, date) {
-  			var year = date.year(), 
-  				month = date.month() + 1, // momentjs is 0 indexed 
-  				day = date.date(); 
-  			if(scope.availableDates[year][month] !== undefined) {
-  				return scope.availableDates[year][month].includes(day);
-  			} else {
-  				return false
-  			}
+        console.log(scope.availableDates)
+        //if (scope.availableDates === null) {
+          //return false;
+        //}
+        //var year = date.year(),
+          //month = date.month() + 1, // momentjs is 0 indexed
+          //day = date.date();
+        //if(scope.availableDates[year][month] !== undefined) {
+          //return scope.availableDates[year][month].includes(day);
+        //} else {
+          return false
+        //}
   		}
 
   		/**
-		 *  Removes the time generated from moment.js. 
+		 *  Removes the time generated from moment.js.
 		 *	Only the date, month, and year are needed.
-		 *	
+		 *
 		 *	@param {Momentjs~moment} date
 		 *		A date object to be sanitized.
 		 *
@@ -75,7 +79,7 @@ angular.module('app.directive.calendar', [])
   		/**
 		 *  Calculates a month's date layout and adds it
 		 *	to the scope.
-		 *	
+		 *
 		 *	@param {$scope} scope
 		 *		The scope of the current object.
 		 *	@param {Momentjs~moment} start
@@ -85,9 +89,9 @@ angular.module('app.directive.calendar', [])
 		 */
   		function buildMonth(scope, start, month) {
   			scope.weeks = [];
-  			var done = false, 
-  				date = start.clone(), 
-  				monthIndex = date.month(), 
+  			var done = false,
+  				date = start.clone(),
+  				monthIndex = date.month(),
   				count = 0;
   			while(!done) {
   				scope.weeks.push({days: buildWeek(scope, date.clone(), month)});
@@ -99,7 +103,7 @@ angular.module('app.directive.calendar', [])
 
   		/**
 		 *  Returns an array of date numbers for a given week in a month.
-		 *  Determines if the date is the current date and sets the date if 
+		 *  Determines if the date is the current date and sets the date if
 		 *	it is an available date.
 		 *
 		 *	@param {$scope} scope
