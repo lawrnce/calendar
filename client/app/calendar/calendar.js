@@ -109,9 +109,9 @@ angular.module('calendar', ['app.services.date'])
    *
    *	@param {$scope} scope
    *		The scope of the current object.
-   *	@params {Momentjs~moment} date
+   *	@param {Momentjs~moment} date
    *		The start date of the week.
-   *	@params {Momentjs~moment} month
+   *	@param {Momentjs~moment} month
    *		The current month being generated.
    *
    *	@return
