@@ -5,9 +5,11 @@ var mongoose = require('mongoose');
 var uniqueValidator = require('mongoose-unique-validator');
 var path = require('path');
 var moment = require('moment');
+var config = require('config');
 
 // Connect to db
-mongoose.connect('mongodb://localhost/availabledates');
+var connectionString = config.get('db_connection_string');
+mongoose.connect(connectionString);
 
 // Define date schema
 var dateSchema = mongoose.Schema({
