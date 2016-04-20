@@ -39,7 +39,7 @@ app.get('/api/date', function(req, res) {
     dates.forEach(function(date) {
       dateArray.push(date['date']);
     })
-    res.send(dateArray);
+    res.send({dates: dateArray});
   });
 });
 

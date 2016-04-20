@@ -25,7 +25,7 @@ angular.module('app.services.date', [])
     return $http.get(url).then(function(response) {
       var data = response.data;
       if(data != null) {
-        data.forEach(function(dateString) {
+        data['dates'].forEach(function(dateString) {
           var date = dateString.split('-');
           var year = parseInt(date[0]),
             month = parseInt(date[1]),
