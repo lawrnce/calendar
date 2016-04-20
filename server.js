@@ -59,9 +59,20 @@ app.post('/api/date', function(req, res) {
 });
 
 // DELETE
-app.delete('/api/date', function(req, res) {
-
-})
+app.delete('/api/date/:date_value', function(req, res) {
+  var dateInput = req.params.date_value;
+  if (moment(dateInput, dateFormat, true).isValid()) {
+    AvailableDates.remove({date: dateInput}, function(err, removed) {
+      if (err) {
+        res.status(500).json({success: false, message: err});
+      } else {
+        res.status(200).json({success: true});
+      }
+    });
+  } else {
+    return res.status(400).json({success: false, message: 'Invalid date format.'});
+  }
+});
 
 app.listen(3000, function() {
   console.log('Listening on port 3000');
