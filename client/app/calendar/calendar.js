@@ -54,13 +54,14 @@ angular.module('calendar', ['app.services.date'])
       return false;
     }
     var year = date.year(),
-      month = date.month() + 1, // momentjs is 0 indexed
+        month = date.month() + 1, // momentjs is 0 indexed
         day = date.date();
-        if(scope.dates[year][month] !== undefined) {
-          return scope.dates[year][month].includes(day);
-        } else {
-          return false
-        }
+    if(scope.dates[year] !== undefined) {
+      if(scope.dates[year][month] !== undefined) {
+        return scope.dates[year][month].includes(day);
+      }
+    }
+    return false
   }
 
   /**
