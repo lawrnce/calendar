@@ -13,9 +13,9 @@
   <span class="day">S</span>
 </div>
 <div class="week" ng-repeat="week in weeks">
-  <span class="day" ng-class="{ 
-    today: day.isToday,
-    'different-month': !day.isCurrentMonth,
-    available: day.isAvailable
-    }" ng-repeat="day in week.days">{{day.number}}</span>
+  <span class="day" ng-class="{
+  today: day.isToday,
+  'different-month': !day.isCurrentMonth,
+  available: day.isAvailable
+  }" ng-repeat="day in week.days">{{day.number}}</span>
 </div>

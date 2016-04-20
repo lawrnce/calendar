@@ -18,31 +18,31 @@
  *    }
  */
 angular.module('app.services.date', [])
-  .factory('DateService',['$http', 'DATE_API_END_POINT', function($http, DATE_API_END_POINT) {
-    var dates = {};
-    var refresh = function() {
-      var url = DATE_API_END_POINT;
-      return $http.get(url).then(function(response) {
-        var data = response.data;
-        if(data != null) {
-          data.forEach(function(dateString) {
-            var date = dateString.split('-');
-            var year = parseInt(date[0]),
-                month = parseInt(date[1]),
-                day = parseInt(date[2])
-            if (dates[year] === undefined) {
-              dates[year] = {};
-            }
-            if (dates[year][month] === undefined) {
-              dates[year][month] = [];
-            }
-            dates[year][month].push(day);
-          });
-        }
-      });
-    };
-    refresh();
-    return {
-      dates : dates
-    }
-  }]);
+.factory('DateService',['$http', 'DATE_API_END_POINT', function($http, DATE_API_END_POINT) {
+  var dates = {};
+  var refresh = function() {
+    var url = DATE_API_END_POINT;
+    return $http.get(url).then(function(response) {
+      var data = response.data;
+      if(data != null) {
+        data.forEach(function(dateString) {
+          var date = dateString.split('-');
+          var year = parseInt(date[0]),
+            month = parseInt(date[1]),
+              day = parseInt(date[2])
+              if (dates[year] === undefined) {
+                dates[year] = {};
+              }
+              if (dates[year][month] === undefined) {
+                dates[year][month] = [];
+              }
+              dates[year][month].push(day);
+        });
+      }
+    });
+  };
+  refresh();
+  return {
+    dates : dates
+  }
+}]);
