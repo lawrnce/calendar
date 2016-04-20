@@ -4,7 +4,7 @@
 <img src="/assets/preview.png" />
 </p>
 
-A calendar that highlights an array of dates taken from a an api endpoint.
+A calendar that highlights an array of dates taken from an api endpoint.
 
 ##Installation
 
@@ -12,7 +12,9 @@ Download or clone the repo. Install [MongoDB](https://www.mongodb.org/downloads#
 
 ##Usage
 
-In the root directory run `npm start`. Open http://localhost:3000 in your browser. Refresh the page when database is updated.
+* In the root directory run `npm start`. 
+* Open `http://localhost:3000` in your browser. 
+* Refresh the page when database is updated.
 
 ####Create date
 ```
