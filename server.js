@@ -32,12 +32,19 @@ app.get('/', function(req, res) {
 
 // GET
 app.get('/api/date', function(req, res) {
+  AvailableDates.find({}, function(err, dates) {
+    var dateArray = [];
+    dates.forEach(function(date) {
+      dateArray.push(date['date']);
+    })
+    res.send(dateArray);
+  });
 });
 
 // POST
 app.post('/api/date', function(req, res) {
   var dateInput = req.body.date;
-  if (moment(dateInput, dateFormat).isValid()) {
+  if (moment(dateInput, dateFormat, true).isValid()) {
     var date = new AvailableDates({date: dateInput});
     date.save(function(err, date) {
       if (err) {
