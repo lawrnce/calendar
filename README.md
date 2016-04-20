@@ -12,6 +12,7 @@ Download or clone the repo. Install [MongoDB](https://www.mongodb.org/downloads#
 
 ##Usage
 
+* Make sure MongoDB is running.
 * In the root directory run `npm start`. 
 * Open `http://localhost:3000` in your browser. 
 * Refresh the page when database is updated.
