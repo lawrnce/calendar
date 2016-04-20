@@ -4,7 +4,7 @@
 <img src="/assets/preview.png" />
 </p>
 
-A calendar that highlights an array of dates taken from an api endpoint.
+A calendar that highlights an array of dates taken from an api endpoint. [Live Example](http://availability-calendar.herokuapp.com)
 
 ##Installation
 
