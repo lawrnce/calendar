@@ -1,44 +1,40 @@
 angular.module('calendar', ['app.services.date'])
-	/**
- 	 * 	Calendar Controller
- 	 *
- 	 */
-	.controller('CalendarController', ['$scope', 'DateService', function($scope, DateService) {
-		$scope.dates = DateService.dates;
-	}])
-
-	/**
-	 *  Calendar Directive
- 	 *
- 	 */
-	.directive('myCalendar', function() {
+	.directive('myCalendar', ['$compile', 'DateService', function($compile, DateService) {
   		return {
     		restrict : 'E',
     		templateUrl : "app/calendar/calendar.html",
         css: "css/calendar.css",
-    		link: function(scope) {
-          console.log(scope.dates)
-    			scope.current = removeTime(moment());
-    			scope.month = scope.current.clone();
+    		link: function(scope, element, attrs) {
+          scope.$watch(
+            function () {
+              return DateService.dates;
+            },
+            function (newValue, oldValue) {
+              scope.dates = newValue;
+              scope.current = removeTime(moment());
+              scope.month = scope.current.clone();
 
-    			var start = scope.current.clone();
-    			start.date(1);
-    			removeTime(start.day(0));
-    			buildMonth(scope, start, scope.month)
+              var start = scope.current.clone();
+              start.date(1);
+              removeTime(start.day(0));
+              buildMonth(scope, start, scope.month)
 
-    			scope.next = function() {
-    				var next = scope.month.clone();
-                	removeTime(next.month(next.month()+1).date(1));
-                	scope.month.month(scope.month.month()+1);
-                	buildMonth(scope, next, scope.month);
-    			};
+              scope.next = function() {
+                var next = scope.month.clone();
+                removeTime(next.month(next.month()+1).date(1));
+                scope.month.month(scope.month.month()+1);
+                buildMonth(scope, next, scope.month);
+              };
 
-    			scope.previous = function() {
-    				var previous = scope.month.clone();
-    				removeTime(previous.month(previous.month()-1).date(1));
-					scope.month.month(scope.month.month()-1);
-                	buildMonth(scope, previous, scope.month);
-    			};
+              scope.previous = function() {
+                var previous = scope.month.clone();
+                removeTime(previous.month(previous.month()-1).date(1));
+                scope.month.month(scope.month.month()-1);
+                buildMonth(scope, previous, scope.month);
+              };
+            },  
+            true
+          );
     		}
   		};
 
@@ -54,18 +50,17 @@ angular.module('calendar', ['app.services.date'])
   		 *		A boolean determining if available.
   		 */
   		function isAvailable(scope, date) {
-        //console.log(scope.dates)
-        //if (scope.dates === null) {
-          //return false;
-        //}
-        //var year = date.year(),
-          //month = date.month() + 1, // momentjs is 0 indexed
-          //day = date.date();
-        //if(scope.availableDates[year][month] !== undefined) {
-          //return scope.availableDates[year][month].includes(day);
-        //} else {
+        if (Object.keys(scope.dates).length === 0) {
+          return false;
+        }
+        var year = date.year(),
+          month = date.month() + 1, // momentjs is 0 indexed
+          day = date.date();
+        if(scope.dates[year][month] !== undefined) {
+          return scope.dates[year][month].includes(day);
+        } else {
           return false
-        //}
+        }
   		}
 
   		/**
@@ -138,4 +133,4 @@ angular.module('calendar', ['app.services.date'])
         	}
         	return days;
   		}
-	});
+	}]);
